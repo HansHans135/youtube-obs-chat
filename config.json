@@ -1,10 +1,10 @@
 {
-    "live_id":"11RiSpORsE0",
+    "live_id":"gyWXkY-LS7I",
     "color":{
         "isChatModerator":"#1e90ff",
         "isChatSponsor":"#00ff00",
         "isChatOwner":"yellow",
         "default":"white"
     },
-    "message_amount":20
+    "message_amount":15
 }
