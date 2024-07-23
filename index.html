@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        td {
+            font-family: "Noto Sans TC", sans-serif;
+            font-optical-sizing: auto;
+            font-size: 30;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    <iframe id="chat" src="chat.html" width="100%">
+        看不到頁面時才會顯示這行文字
+    </iframe>
+-->
+    <table id="chat"></table>
+    <script>
+
+        function infiniteLoopWithDelay() {
+            console.log('開始擷取');
+            const url = 'http://localhost:15873/chat';
+            //<span style='color: white;'>:</span>
+            fetch(url)
+                .then(response => response.json())
+                .then(jsonData => {
+                    let el = window.document.querySelector("#chat")
+                    let text = ""
+                    for (const i in jsonData) {
+                            text+=`<td style="text-align:right;white-space: nowrap;vertical-align:text-top;">
+                                <span style='color: ${jsonData[i].name_color};'> ${jsonData[i].author}</span>
+                                <span style='color: white;'>:</span>
+                            </td>
+                            <td>
+                                <span style='color: white;'> ${jsonData[i].message}</span>
+                            </td>
+                            </tr>`
+                    }
+                    el.innerHTML = text
+                });
+            setTimeout(() => {
+                infiniteLoopWithDelay();
+            }, 1000);
+        }
+        infiniteLoopWithDelay();
+
+    </script>
+</body>
+
+</html>

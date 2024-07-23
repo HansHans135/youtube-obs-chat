@@ -1,0 +1,10 @@
+{
+    "live_id":"11RiSpORsE0",
+    "color":{
+        "isChatModerator":"#1e90ff",
+        "isChatSponsor":"#00ff00",
+        "isChatOwner":"yellow",
+        "default":"white"
+    },
+    "message_amount":20
+}
